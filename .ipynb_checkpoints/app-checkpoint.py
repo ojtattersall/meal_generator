@@ -2,12 +2,18 @@ import streamlit as st
 import numpy as np
 from functions import goodfood, bonappetit, nigella
 
+#Make a title
+
 st.title("Megan & Ollie's Meal Generator")
+
+#Input form for user
 
 form = st.form(key='input')
 option = form.multiselect('Choose sources',['BBC Good Food','Bon Appetit','Nigella'])
 ingredient = form.text_input(label="Give me a suggestion:")
 submit_button = form.form_submit_button(label="Go")
+
+#After submitting, get the links and randomly choose between them
 
 if submit_button:
     
