@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from functions import goodfood, bonappetit, nigella
+from functions import goodfood, bonappetit, nigella, olive
 
 #Make a title
 
@@ -9,7 +9,7 @@ st.title("Megan & Ollie's Meal Generator")
 #Input form for user
 
 form = st.form(key='input')
-option = form.multiselect('Choose sources',['BBC Good Food','Bon Appetit','Nigella'])
+option = form.multiselect('Choose sources',['BBC Good Food','Bon Appetit','Nigella','Olive'])
 ingredient = form.text_input(label="Give me a suggestion:")
 submit_button = form.form_submit_button(label="Go")
 
@@ -30,6 +30,8 @@ if submit_button:
                 candidates.append(bonappetit(ingredient))
             if op=='Nigella':
                 candidates.append(nigella(ingredient))
+            if op=='Olive':
+                candidates.append(olive(ingredient))
 
         link = candidates[np.random.randint(0,len(candidates))]
 

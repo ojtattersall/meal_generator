@@ -31,3 +31,13 @@ def nigella(ingredient):
     choice = hrefs[np.random.randint(low=0,high=len(hrefs))]
     return_url = "https://www.nigella.com"+choice
     return return_url
+
+def olive(ingredient):
+    search_term = ingredient.replace(' ','+')
+    url = 'https://www.olivemagazine.com/search/recipes/?q='+search_term
+    soup = BS(requests.get(url).text)
+    results = soup.find_all("a",class_="img-container img-container--portrait-thumbnail")
+    hrefs = [x['href'] for x in results]
+    choice = hrefs[np.random.randint(low=0,high=len(hrefs))]
+    return_url = 'https://www.olivemagazine.com'+choice
+    return return_url
