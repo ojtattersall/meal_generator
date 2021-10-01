@@ -34,5 +34,6 @@ if submit_button:
                 candidates.append(olive(ingredient))
 
         link = candidates[np.random.randint(0,len(candidates))]
-
-        st.write("Here's your recipe: [link]("+link+")")
+        with st.spinner():
+            
+            st.success("Here's your recipe: [link]("+link+")")
