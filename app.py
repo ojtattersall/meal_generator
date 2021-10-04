@@ -4,7 +4,7 @@ from functions import goodfood, bonappetit, nigella, olive
 
 #Make a title
 
-st.title("Megan & Ollie's Meal Generator")
+st.title("What's for dinner?")
 
 #Input form for user
 
