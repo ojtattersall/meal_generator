@@ -8,8 +8,6 @@ def goodfood(ingredient):
     soup = BS(requests.get(url).text)
     results = soup.find_all("a",class_="standard-card-new__article-title qa-card-link")
     hrefs = [x['href'] for x in results]
-    if len(hrefs==0):
-        return False
     choice = hrefs[np.random.randint(low=0,high=len(hrefs))]
     return_url = "https://www.bbcgoodfood.com"+choice
     return return_url
@@ -20,8 +18,6 @@ def bonappetit(ingredient):
     soup = BS(requests.get(url).text)
     results = soup.find_all("a",class_="photo-link")
     hrefs = [x['href'] for x in results]
-    if len(hrefs==0):
-        return False
     choice = hrefs[np.random.randint(low=0,high=len(hrefs))]
     return_url = "https://bonappetit.com"+choice
     return return_url
@@ -32,8 +28,6 @@ def nigella(ingredient):
     soup = BS(requests.get(url).text)
     results = soup.find_all("a")[27:38]
     hrefs = [x['href'] for x in results]
-    if len(hrefs==0):
-        return False
     choice = hrefs[np.random.randint(low=0,high=len(hrefs))]
     return_url = "https://www.nigella.com"+choice
     return return_url
@@ -44,8 +38,6 @@ def olive(ingredient):
     soup = BS(requests.get(url).text)
     results = soup.find_all("a",class_="img-container img-container--portrait-thumbnail")
     hrefs = [x['href'] for x in results]
-    if len(hrefs==0):
-        return False
     choice = hrefs[np.random.randint(low=0,high=len(hrefs))]
     return_url = 'https://www.olivemagazine.com'+choice
     return return_url

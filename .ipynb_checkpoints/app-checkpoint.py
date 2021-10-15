@@ -32,13 +32,9 @@ if submit_button:
                 candidates.append(nigella(ingredient))
             if op=='Olive':
                 candidates.append(olive(ingredient))
+    
+
+        link = candidates[np.random.randint(0,len(candidates))]
         
-        candidates = [c for c in candidates if c!=False]
-        
-        if len(candidates)==0:
-            st.write('Whoops! Try a different source/ingredient combination')
-        else:
-            link = candidates[np.random.randint(0,len(candidates))]
-        
-            st.success("Here's your recipe: [link]("+link+")")
-            st.balloons()
+        st.success("Here's your recipe: [link]("+link+")")
+        st.balloons()
