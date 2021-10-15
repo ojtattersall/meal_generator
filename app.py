@@ -40,6 +40,10 @@ if submit_button:
             if len(candidates)==0:
                 st.write('Whoops, try a different source/ingredient combination')
             else:
-                link = candidates[np.random.randint(0,len(candidates))]
-
-                st.success("Here's your recipe: [link]("+link+")")
+                recipe = candidates[np.random.randint(0,len(candidates))]
+                
+                emoji_list = [':sunglasses:',':grin:',':yum:']
+                emoji = emoji_list[np.random.randint(0,len(emoji_list))]
+                
+                return_string = st.markdown('Here\'s your [recipe] ('+recipe+') '+emoji+':fork_and_knife:')
+                
