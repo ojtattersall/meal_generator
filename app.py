@@ -21,20 +21,37 @@ if submit_button:
         st.write('Please select some sources!')
     
     else:
-
         candidates = []
         for op in option:
             if op=='BBC Good Food':
-                candidates.append(goodfood(ingredient))
+                try:
+                    c = goodfood(ingredient)
+                    candidates.append(c)
+                except:
+                    pass
             if op=='Bon Appetit':
-                candidates.append(bonappetit(ingredient))
+                try:
+                    c = bonappetit(ingredient)
+                    candidates.append(c)
+                except:
+                    pass
             if op=='Nigella':
-                candidates.append(nigella(ingredient))
+                try:
+                    c = nigella(ingredient)
+                    candidates.append(c)
+                except:
+                    pass
             if op=='Olive':
-                candidates.append(olive(ingredient))
-    
-
-        link = candidates[np.random.randint(0,len(candidates))]
+                try:
+                    c = olive(ingredient)
+                    candidates.append(c)
+                except:
+                    pass
         
-        st.success("Here's your recipe: [link]("+link+")")
-        st.balloons()
+        if len(candidates)==0:
+            st.write('Whoops, try a different source/ingredient combination')
+        else:
+            link = candidates[np.random.randint(0,len(candidates))]
+        
+            st.success("Here's your recipe: [link]("+link+")")
+            st.balloons()
