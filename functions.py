@@ -41,3 +41,5 @@ def olive(ingredient):
     choice = hrefs[np.random.randint(low=0,high=len(hrefs))]
     return_url = 'https://www.olivemagazine.com'+choice
     return return_url
+
+func_dict = {'BBC Good Food':goodfood, 'Bon Appetit':bonappetit, 'Nigella':nigella, 'Olive':olive}

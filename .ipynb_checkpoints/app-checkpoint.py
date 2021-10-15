@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from functions import goodfood, bonappetit, nigella, olive
+from functions import goodfood, bonappetit, nigella, olive, func_dict
 
 #Make a title
 
@@ -16,42 +16,30 @@ submit_button = form.form_submit_button(label="Go")
 #After submitting, get the links and randomly choose between them
 
 if submit_button:
-    
-    if len(option)==0:
-        st.write('Please select some sources!')
-    
-    else:
-        candidates = []
-        for op in option:
-            if op=='BBC Good Food':
-                try:
-                    c = goodfood(ingredient)
-                    candidates.append(c)
-                except:
-                    pass
-            if op=='Bon Appetit':
-                try:
-                    c = bonappetit(ingredient)
-                    candidates.append(c)
-                except:
-                    pass
-            if op=='Nigella':
-                try:
-                    c = nigella(ingredient)
-                    candidates.append(c)
-                except:
-                    pass
-            if op=='Olive':
-                try:
-                    c = olive(ingredient)
-                    candidates.append(c)
-                except:
-                    pass
-        
-        if len(candidates)==0:
-            st.write('Whoops, try a different source/ingredient combination')
+    with st.spinner(text='Searching...'):
+    #If no websites are selected, ask for sources
+
+        if len(option)==0:
+            st.write('Please select some sources!')
+
+    #For each source selected, func_dict returns appropriate scraping function and
+    #appends returned candidate recipe to list
+
         else:
-            link = candidates[np.random.randint(0,len(candidates))]
-        
-            st.success("Here's your recipe: [link]("+link+")")
-            st.balloons()
+            candidates = []
+            for op in option:
+
+                try:
+                    c = func_dict[op](ingredient)
+                    candidates.append(c)
+                except:
+                    pass
+
+        #Ask for a different combo if no recipes found
+
+            if len(candidates)==0:
+                st.write('Whoops, try a different source/ingredient combination')
+            else:
+                link = candidates[np.random.randint(0,len(candidates))]
+
+                st.success("Here's your recipe: [link]("+link+")")
