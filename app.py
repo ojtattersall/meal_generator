@@ -27,20 +27,20 @@ if submit_button:
 
         else:
             candidates = []
-            for op in option:
+            op = option[np.random.randint(0,len(option))]
 
-                try:
-                    c = func_dict[op](ingredient)
-                    candidates.append(c)
-                except:
-                    pass
+            try:
+                c = func_dict[op](ingredient)
+                candidates.append(c)
+            except:
+                pass
 
         #Ask for a different combo if no recipes found
 
             if len(candidates)==0:
                 st.write('Whoops, try a different source/ingredient combination')
             else:
-                recipe = candidates[np.random.randint(0,len(candidates))]
+                recipe = candidates[0]
                 
                 emoji_list = [':sunglasses:',':grin:',':yum:']
                 emoji = emoji_list[np.random.randint(0,len(emoji_list))]
