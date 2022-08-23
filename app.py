@@ -42,7 +42,7 @@ if submit_button:
             else:
                 recipe = candidates[0]
                 
-                emoji_list = [':sunglasses:',':grin:',':yum:']
+                emoji_list = [':sunglasses:',':grin:',':yum:',':relaxed:']
                 emoji = emoji_list[np.random.randint(0,len(emoji_list))]
                 
                 return_string = st.markdown('Here\'s your [recipe] ('+recipe+') '+emoji+':fork_and_knife:')
